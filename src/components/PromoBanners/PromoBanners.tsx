@@ -11,7 +11,7 @@ const banners: Banner[] = [
   { name: "Off", discount: "35" },
 ];
 
-export const PromoBanners: React.FC = (): JSX.Element => {
+export const PromoBanners = (): JSX.Element => {
   return (
     <section className="container section">
       <ul className="flex flex-col gap-[16px] md:flex-row md:flex-wrap md:gap-[28px] lg:justify-center">

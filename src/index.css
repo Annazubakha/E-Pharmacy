@@ -56,3 +56,55 @@ a {
 .section {
   @apply mb-[80px] md:mb-[120px];
 }
+
+.item {
+  @apply relative after:content-[''] after:absolute after:top-0 after:right-[-10px] after:h-full after:w-[1px] after:bg-before-color md:after:right-[-24px];
+}
+
+/**
+  |============================
+  | feactures slider
+  |============================
+*/
+.slider-item-custom {
+  /* height: 73px !important;
+  width: 100% !important; */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+  white-space: nowrap;
+}
+
+/**
+  |============================
+  | 
+  |============================
+*/
+.navlink {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.navlink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: -1;
+  transition: left 0.6s ease;
+}
+
+.navlink:hover::before,
+.navlink:focus::before {
+  left: 0;
+}
+
+.navlink:hover,
+.navlink:focus {
+  color: #59b17a;
+}

@@ -1,4 +1,4 @@
-export const MainBanner: React.FC = (): JSX.Element => {
+export const MainBanner = (): JSX.Element => {
   return (
     <section className="relative bg-my-green mb-[40px]   text-white h-[728px] pt-[197px] md:pt-[186px] md:mb-[60px]  md:h-[920px] lg:mb-[64px] lg:h-[698px] lg:pt-[44px] lg:flex lg:justify-center m-auto container">
       <div className="bg-cover bg-no-repeat bg-image h-[312px] md:h-[508px] lg:w-[749px]">

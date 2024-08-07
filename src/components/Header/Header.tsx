@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { Icon, Logo } from "../index";
 import { useWindowSizeHook } from "../../helpers";
 
-export const Header: React.FC = (): JSX.Element => {
+export const Header = (): JSX.Element => {
   const location = useLocation();
   const size = useWindowSizeHook();
   return (
@@ -12,9 +12,7 @@ export const Header: React.FC = (): JSX.Element => {
       }`}
     >
       <Logo />
-      {size.innerWidth >= 1440 ? (
-        ""
-      ) : (
+      {size.innerWidth < 1440 && (
         <Icon
           size={32}
           id="burger"

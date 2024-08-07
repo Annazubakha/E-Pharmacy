@@ -17,7 +17,7 @@ export const NearestStoresItem: React.FC<NearestStoresItemProps> = ({
 
   return (
     <li
-      className="bg-green-bg p-[40px] rounded-[27px] relative hover:scale-105 transition-transform cursor-pointer md:w-[344px]"
+      className=" bg-green-bg p-[40px] rounded-[27px] relative hover:scale-105 transition-transform cursor-pointer md:w-[344px] overflow-hidden"
       onClick={handleNavigate}
     >
       <h3 className="text-[16px] leading-[1.4] text-my-black font-semibold w-[123px] truncate mb-[32px] md:text-[20px] md:mb-[40px]">
@@ -42,6 +42,7 @@ export const NearestStoresItem: React.FC<NearestStoresItemProps> = ({
       <div className="absolute top-[32px] right-[32px] flex text-[12px] leading-[1.5] font-semibold tracking-[-0.02em] justify-center items-center w-[65px] rounded-[8px] text-my-green h-[34px] bg-green-10 md:w-[71px] md:top-[38px] md:right-[24px]">
         OPEN
       </div>
+      <Icon id="bg" size={168} className="absolute top-[60px] right-[-25px]" />
     </li>
   );
 };

@@ -13,6 +13,7 @@ import {
 
 // import { authReducer } from "./auth/slice";
 import { storesNearReducer } from "./storesNear/slice";
+import { reviewsReducer } from "./reviews/slice";
 
 // const persistConfig = {
 //   key: "root",
@@ -27,6 +28,7 @@ export const store = configureStore({
   reducer: {
     // auth: persistedAuth,
     storesNear: storesNearReducer,
+    reviews: reviewsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

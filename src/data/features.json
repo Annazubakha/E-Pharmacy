@@ -1,0 +1,7 @@
+[
+  { "id": "1", "feature": "Take user orders form online" },
+  { "id": "2", "feature": "Create your shop profile" },
+  { "id": "3", "feature": "Manage your store" },
+  { "id": "4", "feature": "Get more orders" },
+  { "id": "5", "feature": "Storage shed" }
+]
