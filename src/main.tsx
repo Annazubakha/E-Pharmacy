@@ -10,7 +10,7 @@ import { store } from "./redux/store";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/pharmacy">
+    <BrowserRouter>
       <ToastContainer autoClose={3000} style={{ zIndex: 99999 }} />
       <Provider store={store}>
         <App />
@@ -18,3 +18,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+//  basename = "/pharmacy";

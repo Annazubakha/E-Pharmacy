@@ -13,5 +13,5 @@ export default defineConfig({
       icons: "/src/assets/icons",
     },
   },
-  base: "/pharmacy",
+  // base: "/pharmacy",
 });
