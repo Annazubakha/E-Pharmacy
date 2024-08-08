@@ -9,9 +9,11 @@ export interface Store {
   city: string;
   phone: string;
   rating: string;
+  open: string;
+  close: string;
 }
 
-interface StoresState {
+export interface StoresState {
   stores: Store[];
   isLoading: boolean;
   error: string | null;

@@ -67,8 +67,6 @@ a {
   |============================
 */
 .slider-item-custom {
-  /* height: 73px !important;
-  width: 100% !important; */
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -81,10 +79,9 @@ a {
   | 
   |============================
 */
-.navlink {
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
+.navlink,
+.navlinkgreen {
+  @apply relative overflow-hidden z-0;
 }
 
 .navlink::before {
@@ -100,11 +97,37 @@ a {
 }
 
 .navlink:hover::before,
-.navlink:focus::before {
-  left: 0;
+.navlink:focus::before,
+.navlinkgreen:hover::before,
+.navlinkgreen:focus::before {
+  @apply left-0;
 }
 
 .navlink:hover,
 .navlink:focus {
-  color: #59b17a;
+  @apply text-my-green;
+}
+
+.navlinkgreen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #59b17a;
+  z-index: -1;
+  transition: left 0.6s ease;
+}
+
+.navlinkgreen:hover,
+.navlinkgreen:focus {
+  color: #fff;
+}
+
+.decoration {
+  @apply relative after:content-[''] after:absolute after:bottom-[-12px] after:right-[33px] after:h-[8px] after:w-[15px] after:bg-my-white lg:after:bottom-[12px] lg:after:right-[-17px] shadow shadow-[#D9D9D9];
+}
+.decoration_one {
+  @apply relative after:content-[''] after:absolute after:bottom-[-12px] after:right-[52px] after:h-[8px] after:w-[15px] after:bg-my-white lg:after:bottom-[12px] lg:after:right-[-17px] shadow shadow-[#D9D9D9];
 }

@@ -11,7 +11,10 @@ export const Footer = (): JSX.Element => {
   const size = useWindowSizeHook();
   return (
     <footer className="relative bg-my-green text-[14px] text-my-white leading-[1.29] py-[20px] container mt-auto md:py-[32px] w-full lg:py-[40px]">
-      <div className="gap-[12px] mb-[20px] flex items-center md:gap-[14px]">
+      <NavLink
+        to="/home"
+        className="gap-[12px] mb-[20px] flex items-center md:gap-[14px]"
+      >
         <picture>
           <source
             media="(min-width: 768px)"
@@ -23,7 +26,7 @@ export const Footer = (): JSX.Element => {
         <p className="text-[16px] tracking-[-0.03em] font-semibold md:text-[20px]">
           E-Pharmacy
         </p>
-      </div>
+      </NavLink>
       <p className="mb-[40px] md:mb-[120px] md:text-[14px] md:leading-[1.25] w-[261px] lg:mb-[104px]">
         Get the medicine to help you feel better, get back to your active life,
         and enjoy every moment.

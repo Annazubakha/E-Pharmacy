@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { Store } from "../../redux/storesNear/slice";
 import { Icon } from "../index";
+import { convertWorkingHours } from "../../helpers";
 
-interface NearestStoresItemProps {
+interface StoresItemProps {
   store: Store;
 }
 
-export const NearestStoresItem: React.FC<NearestStoresItemProps> = ({
+export const StoresItem: React.FC<StoresItemProps> = ({
   store,
 }): JSX.Element => {
   const navigate = useNavigate();
@@ -14,6 +15,10 @@ export const NearestStoresItem: React.FC<NearestStoresItemProps> = ({
   const handleNavigate = (): void => {
     navigate("/medicine");
   };
+
+  const currentTime = new Date().getHours();
+  const openHour = convertWorkingHours(store.open);
+  const closeHour = convertWorkingHours(store.close);
 
   return (
     <li
@@ -39,9 +44,15 @@ export const NearestStoresItem: React.FC<NearestStoresItemProps> = ({
         <Icon id="star" size={16} className="fill-my-yellow" />
         {store.rating}
       </div>
-      <div className="absolute top-[32px] right-[32px] flex text-[12px] leading-[1.5] font-semibold tracking-[-0.02em] justify-center items-center w-[65px] rounded-[8px] text-my-green h-[34px] bg-green-10 md:w-[71px] md:top-[38px] md:right-[24px]">
-        OPEN
-      </div>
+      {currentTime >= openHour && currentTime <= closeHour ? (
+        <div className="absolute top-[32px] right-[32px] flex text-[12px] leading-[1.5] font-semibold tracking-[-0.02em] justify-center items-center w-[65px] rounded-[8px] text-my-green h-[34px] bg-green-10 md:w-[71px] md:top-[38px] md:right-[24px]">
+          OPEN
+        </div>
+      ) : (
+        <div className="absolute top-[32px] right-[32px] flex text-[12px] leading-[1.5] font-semibold tracking-[-0.02em] justify-center items-center w-[65px] rounded-[8px] text-my-red h-[34px] bg-red-10 md:w-[71px] md:top-[38px] md:right-[24px]">
+          CLOSE
+        </div>
+      )}
       <Icon id="bg" size={168} className="absolute top-[60px] right-[-25px]" />
     </li>
   );

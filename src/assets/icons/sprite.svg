@@ -68,8 +68,9 @@
   <path d="M113.943 42.8674C118.823 30.7904 132.569 24.9556 144.646 29.835L328.956 104.301L311.286 148.036L126.976 73.5697C114.899 68.6903 109.064 54.9444 113.943 42.8674Z" fill="#59B17A" fill-opacity="0.08" />
   <path d="M30.8349 73.1906C35.7144 61.1136 49.4603 55.2788 61.5373 60.1582L245.848 134.625L228.178 178.359L43.8673 103.893C31.7903 99.0135 25.9555 85.2676 30.8349 73.1906Z" fill="#59B17A" fill-opacity="0.08" />
 </symbol>
-<!-- <symbol id="icon-bg" width="163" height="91" viewBox="0 0 163 91" fill="none" >
-<path d="M1.62752 11.4033C5.28771 2.344 15.5989 -2.03283 24.6582 1.62736L162.914 57.4865L149.66 90.2931L11.4035 34.4339C2.34417 30.7737 -2.03267 20.4626 1.62752 11.4033V11.4033Z" fill="#59B17A" fill-opacity="0.08"/>
-</symbol> -->
+<symbol id="icon-close" viewBox="0 0 32 32" fill="none" >
+  <path d="M24 8L8 24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M8 8L24 24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</symbol>
    </defs>
   </svg>
