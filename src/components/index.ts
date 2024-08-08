@@ -19,3 +19,6 @@ export * from "./BurgerMenu/BurgerMenu";
 export * from "./AuthNav/AuthNav";
 export * from "./LogOutBtn/LogOutBtn";
 export * from "./Nav/Nav";
+export * from "./MainContentAuth/MainContentAuth";
+export * from "./LoginForm/LoginForm";
+export * from "./RegisterForm/RegisterForm";

@@ -48,7 +48,35 @@ a {
     }
   }
 }
+.auth-bg {
+  background-size: 95px 93px;
+  background-position: top 28px right 32px;
+  background-repeat: no-repeat;
+  background-image: url("assets/images/auth/piil_mobile@1x.png");
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .auth-bg {
+    background-image: url("assets/images/auth/piil_mobile@2x.png");
+  }
+}
 
+@media (min-width: 768px) {
+  .auth-bg {
+    background-size: 179px 175px;
+    background-position: top 35px right 85px;
+    background-image: url("assets/images/auth/piil_tablet@1x.png");
+  }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .auth-bg {
+      background-image: url("assets/images/auth/piil_tablet@2x.png");
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .auth-bg {
+    background-position: top 90px right 50px;
+  }
+}
 .main-title {
   text-shadow: 0 4px 85px rgba(29, 30, 33, 0.3);
 }
@@ -130,4 +158,20 @@ a {
 }
 .decoration_one {
   @apply relative after:content-[''] after:absolute after:bottom-[-12px] after:right-[52px] after:h-[8px] after:w-[15px] after:bg-my-white lg:after:bottom-[12px] lg:after:right-[-17px] shadow shadow-[#D9D9D9];
+}
+/**
+  |============================
+  | Auth 
+  |============================
+*/
+.input_auth {
+  @apply w-full rounded-[60px] h-[44px] bg-white pl-[18px] text-[14px] border-[1px]  outline-none;
+}
+
+.btn_form_submit {
+  @apply w-full rounded-[60px] h-[44px] flex justify-center items-center text-white text-[14px] leading-[1.29] bg-my-green hover:bg-green-dark focus:bg-green-dark;
+}
+
+.input_error {
+  @apply text-[10px] text-my-red absolute top-[42px] left-[18px];
 }
