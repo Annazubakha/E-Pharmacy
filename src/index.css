@@ -175,3 +175,54 @@ a {
 .input_error {
   @apply text-[10px] text-my-red absolute top-[42px] left-[18px];
 }
+
+/**
+  |============================
+  | pagination
+  |============================
+*/
+.btn_pagination {
+  @apply flex w-[35px] h-[35px] rounded-[50%] border-[1px] items-center justify-center md:w-[44px] md:h-[44px];
+  &:hover:not(:disabled) {
+    @apply text-my-white bg-my-green border-my-green;
+  }
+}
+.btn_pagination_number {
+  @apply flex w-[35px] h-[35px] rounded-[50%] border-[1px] items-center justify-center  md:w-[44px] md:h-[44px];
+
+  &:hover:not(:disabled) {
+    @apply text-my-white bg-my-green border-my-green;
+  }
+  &:disabled {
+    @apply opacity-50;
+  }
+  &.active {
+    @apply text-my-white bg-my-green border-my-green;
+  }
+}
+.btn_pagination_double {
+  @apply flex w-[35px] h-[35px] rounded-[50%] border-[1px] items-center justify-center relative md:w-[44px] md:h-[44px];
+
+  &:hover:not(:disabled) {
+    @apply text-my-white bg-my-green border-my-green;
+  }
+}
+.icon_pagination {
+  @apply fill-my-black;
+}
+
+.btn_pagination:hover .icon_pagination,
+.btn_pagination_double:hover .icon_pagination {
+  @apply fill-my-white;
+}
+.btn_pagination:disabled .icon_pagination,
+.btn_pagination_double:disabled .icon_pagination {
+  @apply opacity-50 fill-my-black;
+}
+
+.active_item {
+  @apply text-my-green;
+}
+.dropdown_list_item {
+  @apply cursor-pointer;
+}

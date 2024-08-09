@@ -22,3 +22,8 @@ export * from "./Nav/Nav";
 export * from "./MainContentAuth/MainContentAuth";
 export * from "./LoginForm/LoginForm";
 export * from "./RegisterForm/RegisterForm";
+export * from "./ProductsItem/ProductsItem";
+export * from "./ProductsList/ProductsList";
+export * from "./Pagination/Pagination";
+export * from "./Filters/Filters";
+export * from "./SearchField/SearchField";

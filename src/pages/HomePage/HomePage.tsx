@@ -8,7 +8,10 @@ import {
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectReviews } from "../../redux/reviews/slice";
+import {
+  selectIsLoadingReviews,
+  selectReviews,
+} from "../../redux/reviews/slice";
 import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
 import { toast } from "react-toastify";
@@ -20,7 +23,9 @@ const HomePage = (): JSX.Element => {
   const reviews = useSelector(selectReviews);
   const stores = useSelector(selectStores);
   const isLoading = useSelector(selectIsLoading);
+  const isLoadingReviews = useSelector(selectIsLoadingReviews);
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,7 +40,7 @@ const HomePage = (): JSX.Element => {
 
   return (
     <>
-      {isLoading && <Loader size={45} />}
+      {(isLoading || isLoadingReviews) && <Loader size={45} />}
       <MainBanner />
       <PromoBanners />
       <MedicineStores stores={stores} />

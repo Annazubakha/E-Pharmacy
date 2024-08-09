@@ -15,6 +15,7 @@ import {
 import { storesNearReducer } from "./storesNear/slice";
 import { reviewsReducer } from "./reviews/slice";
 import { storesReducer } from "./stores/slice";
+import { productsReducer } from "./products/slice";
 
 // const persistConfig = {
 //   key: "root",
@@ -31,6 +32,7 @@ export const store = configureStore({
     stores: storesReducer,
     storesNear: storesNearReducer,
     reviews: reviewsReducer,
+    products: productsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

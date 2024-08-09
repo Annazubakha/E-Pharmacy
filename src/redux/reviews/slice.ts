@@ -51,5 +51,6 @@ const slice = createSlice({
 export const reviewsReducer = slice.reducer;
 
 export const selectReviews = (state: RootState) => state.reviews.reviews;
-export const selectIsLoading = (state: RootState) => state.reviews.isLoading;
+export const selectIsLoadingReviews = (state: RootState) =>
+  state.reviews.isLoading;
 export const selectError = (state: RootState) => state.reviews.error;

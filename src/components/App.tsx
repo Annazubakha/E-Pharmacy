@@ -60,7 +60,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/product"
+            path="/product/:id"
             element={
               // <PublicRoute>
               <ProductPage />
