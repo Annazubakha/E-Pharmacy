@@ -42,3 +42,16 @@ export const fetchCategoriesThunk = createAsyncThunk<
     return thunkAPI.rejectWithValue((error as Error).message);
   }
 });
+
+export const fetchOneProductThunk = createAsyncThunk<
+  Product,
+  string,
+  { rejectValue: string }
+>("get one product", async (id, thunkAPI) => {
+  try {
+    const { data } = await instance.get(`/products/${id}`);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue((error as Error).message);
+  }
+});

@@ -11,7 +11,7 @@ const MedicineStorePage = () => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         await dispatch(fetchStoresThunk()).unwrap();
       } catch (error) {

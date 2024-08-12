@@ -32,7 +32,7 @@ const MedicinePage = (): JSX.Element => {
   const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         await dispatch(fetchCategoriesThunk()).unwrap();
         await dispatch(

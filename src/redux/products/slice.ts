@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
-import { fetchCategoriesThunk, fetchProductsThunk } from "./operation";
+import {
+  fetchCategoriesThunk,
+  fetchOneProductThunk,
+  fetchProductsThunk,
+} from "./operation";
 import { RootState } from "../store";
 
 interface ProductReview {
@@ -7,6 +11,7 @@ interface ProductReview {
   imgUrl: string;
   rating: string;
   comment: string;
+  time: string;
 }
 export interface Category {
   _id: string;
@@ -33,6 +38,7 @@ interface ProductsState {
   page: number;
   categories: Category[];
   totalPages: number;
+  product: Product | null;
 }
 
 const initialState: ProductsState = {
@@ -42,6 +48,7 @@ const initialState: ProductsState = {
   page: 1,
   categories: [],
   totalPages: 0,
+  product: null,
 };
 
 const slice = createSlice({
@@ -72,15 +79,30 @@ const slice = createSlice({
           state.isLoading = false;
         }
       )
+      .addCase(
+        fetchOneProductThunk.fulfilled,
+        (state, action: PayloadAction<Product>) => {
+          state.product = action.payload;
+          state.isLoading = false;
+        }
+      )
       .addMatcher(
-        isAnyOf(fetchProductsThunk.pending, fetchCategoriesThunk.pending),
+        isAnyOf(
+          fetchProductsThunk.pending,
+          fetchCategoriesThunk.pending,
+          fetchOneProductThunk.pending
+        ),
         (state) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        isAnyOf(fetchProductsThunk.rejected, fetchCategoriesThunk.rejected),
+        isAnyOf(
+          fetchProductsThunk.rejected,
+          fetchCategoriesThunk.rejected,
+          fetchOneProductThunk.rejected
+        ),
         (state, action: PayloadAction<string | undefined>) => {
           state.error = action.payload ?? null;
           state.isLoading = false;
@@ -93,6 +115,7 @@ export const { setPage } = slice.actions;
 export const productsReducer = slice.reducer;
 
 export const selectProducts = (state: RootState) => state.products.products;
+export const selectProduct = (state: RootState) => state.products.product;
 export const selectCategories = (state: RootState) => state.products.categories;
 export const selectIsLoading = (state: RootState) => state.products.isLoading;
 export const selectError = (state: RootState) => state.products.error;

@@ -48,6 +48,7 @@ export default {
         "social-media-hover-color": "rgba(247, 248, 250, 0.5);",
         "input-border-color": "rgba(29, 30, 33, 0.1)",
         "gris-light": "rgba(29, 30, 33, 0.6)",
+        "comment-color": " #6a6a6f",
       },
     },
   },

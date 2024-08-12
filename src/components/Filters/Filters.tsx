@@ -25,7 +25,7 @@ export const Filters: React.FC<FiltersProps> = ({
   const closeDropdown = () => {
     setIsOpen(false);
   };
-  const handleSelectedCategory = (category: string) => {
+  const handleSelectedCategory = (category: string): void => {
     setCategory(category);
     setPage(1);
     setSelectedCategory(category);

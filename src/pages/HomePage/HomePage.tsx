@@ -27,7 +27,7 @@ const HomePage = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         await dispatch(fetchReviewsThunk()).unwrap();
         await dispatch(fetchStoresNearThunk()).unwrap();

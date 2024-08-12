@@ -1,5 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { Product } from "../../redux/products/slice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { fetchOneProductThunk } from "../../redux/products/operation";
+import { toast } from "react-toastify";
 
 interface ProductProps {
   product: Product;
@@ -8,6 +12,14 @@ interface ProductProps {
 export const ProductsItem: React.FC<ProductProps> = ({
   product,
 }): JSX.Element => {
+  const dispatch = useDispatch<AppDispatch>();
+  const handleItemDetails = async (id: string): Promise<void> => {
+    try {
+      await dispatch(fetchOneProductThunk(id)).unwrap();
+    } catch (error) {
+      toast.error("Something went wrong.");
+    }
+  };
   return (
     <li>
       <img
@@ -28,6 +40,7 @@ export const ProductsItem: React.FC<ProductProps> = ({
           </button>
           <NavLink
             to={`/product/${product._id}`}
+            onClick={() => handleItemDetails(product._id)}
             className="text-[12px] leading-[1.5] underline decoration-solid text-my-black"
           >
             Details
