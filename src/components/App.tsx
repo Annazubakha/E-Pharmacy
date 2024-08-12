@@ -1,7 +1,11 @@
-import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
-// import { PrivateRoute, PublicRoute } from "../routes";
+import { lazy, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { PrivateRoute, PublicRoute } from "../routes";
 import { SharedLayout } from "./index";
+import { selectIsLoggedIn, selectToken } from "../redux/auth/slice";
+import { AppDispatch } from "../redux/store";
+import { fetchRefreshThunk } from "../redux/auth/operations";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
@@ -15,6 +19,15 @@ const CartPage = lazy(() => import("../pages/CartPage/CartPage"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 
 export const App = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const token = useSelector(selectToken);
+  const dispatch = useDispatch<AppDispatch>();
+  const link = isLoggedIn ? "/cart" : "/home";
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchRefreshThunk());
+    }
+  }, [dispatch, token]);
   return (
     <>
       <Routes>
@@ -22,61 +35,61 @@ export const App = () => {
           <Route
             path="/home"
             element={
-              // <PublicRoute >
-              <HomePage />
-              // </PublicRoute>
+              <PublicRoute restricted={false}>
+                <HomePage />
+              </PublicRoute>
             }
           />
           <Route
             path="/login"
             element={
-              // <PublicRoute >
-              <LoginPage />
-              // </PublicRoute>
+              <PublicRoute restricted={true}>
+                <LoginPage />
+              </PublicRoute>
             }
           />
           <Route
             path="/register"
             element={
-              // <PublicRoute >
-              <RegisterPage />
-              // </PublicRoute>
+              <PublicRoute restricted={true}>
+                <RegisterPage />
+              </PublicRoute>
             }
           />
           <Route
             path="/medicine-store"
             element={
-              // <PublicRoute>
-              <MedicineStorePage />
-              // </PublicRoute>
+              <PublicRoute restricted={false}>
+                <MedicineStorePage />
+              </PublicRoute>
             }
           />
           <Route
             path="/medicine"
             element={
-              // <PublicRoute>
-              <MedicinePage />
-              // </PublicRoute>
+              <PublicRoute restricted={false}>
+                <MedicinePage />
+              </PublicRoute>
             }
           />
           <Route
             path="/product/:id"
             element={
-              // <PublicRoute>
-              <ProductPage />
-              // </PublicRoute>
+              <PublicRoute restricted={false}>
+                <ProductPage />
+              </PublicRoute>
             }
           />
           <Route
             path="/cart"
             element={
-              // <PrivateRoute>
-              <CartPage />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <CartPage />
+              </PrivateRoute>
             }
           />
           <Route path="*" element={<NotFoundPage />} />
-          {/* <Route path="/" element={<Navigate to={link} replace />} /> */}
+          <Route path="/" element={<Navigate to={link} replace />} />
         </Route>
       </Routes>
     </>

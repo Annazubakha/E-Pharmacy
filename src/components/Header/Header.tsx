@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { BurgerMenu, Icon, Logo, Nav } from "../index";
-import { useWindowSizeHook } from "../../helpers";
+import { useSelector } from "react-redux";
+import { AuthNav, BurgerMenu, Icon, Logo, LogOutBtn, Nav } from "../index";
+import { convertUserName, useWindowSizeHook } from "../../helpers";
+import { selectIsLoggedIn, selectUser } from "../../redux/auth/slice";
 
 export const Header = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
   const location = useLocation();
   const size = useWindowSizeHook();
+  const convertedName = convertUserName(user.name ?? "");
   const toggleBurgerMenu = (): void => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -22,20 +27,30 @@ export const Header = (): JSX.Element => {
       }`}
     >
       <Logo />
-      {size.innerWidth < 1440 && (
-        <button onClick={toggleBurgerMenu} className="lg:hidden">
-          <Icon
-            size={32}
-            id="burger"
-            className={`${
-              location.pathname === "/home" ? "stroke-white" : "stroke-my-green"
-            }`}
-          />
-        </button>
-      )}
       {size.innerWidth >= 1440 && <Nav />}
-      {/* {size.innerWidth >= 1440 && !isLoggenIn && <AuthNav />} */}
-      {/* {size.innerWidth >= 1440 && isLoggenIn && <LogOutBtn />} */}
+      {size.innerWidth >= 1440 && !isLoggedIn && <AuthNav />}
+      <div className="flex items-center gap-[10px] md:gap-[12px]">
+        {isLoggedIn && (
+          <div className="w-[40px] h-[40px] rounded-full flex justify-center items-center bg-green-10 text-[14px] leading-[1.4] uppercase font-semibold text-my-green md:w-[44px] md:h-[44px] md:text-[18px]">
+            <p>{convertedName}</p>
+          </div>
+        )}
+        {size.innerWidth < 1440 && (
+          <button onClick={toggleBurgerMenu} className="lg:hidden">
+            <Icon
+              size={32}
+              id="burger"
+              className={`${
+                location.pathname === "/home"
+                  ? "stroke-white"
+                  : "stroke-my-green"
+              }`}
+            />
+          </button>
+        )}
+        {size.innerWidth >= 1440 && isLoggedIn && <LogOutBtn />}
+      </div>
+
       {isMobileMenuOpen && <BurgerMenu toggleBurgerMenu={toggleBurgerMenu} />}
     </header>
   );

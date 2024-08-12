@@ -7,6 +7,7 @@ import {
   Pagination,
   ProductsList,
   Title,
+  GoUpBtn,
 } from "../../components";
 import { AppDispatch } from "../../redux/store";
 import {
@@ -79,6 +80,7 @@ const MedicinePage = (): JSX.Element => {
           ""
         )}
       </section>
+      <GoUpBtn />
     </>
   );
 };

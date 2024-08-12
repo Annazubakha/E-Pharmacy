@@ -1,7 +1,7 @@
-// import { useSelector } from "react-redux";
-// import { selectIsLoggedIn } from "../../redux/auth/slice";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/slice";
 
-import { Icon, Nav } from "../index";
+import { AuthNav, Icon, LogOutBtn, Nav } from "../index";
 
 export interface BurgerMenuProps {
   toggleBurgerMenu: () => void;
@@ -10,7 +10,7 @@ export interface BurgerMenuProps {
 export const BurgerMenu: React.FC<BurgerMenuProps> = ({
   toggleBurgerMenu,
 }): JSX.Element => {
-  //   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <div className="bg-burger-menu-bg fixed w-full top-0 right-0 h-screen z-[1000] ">
@@ -22,8 +22,8 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
           <Icon id="close" size={32} />
         </button>
         <Nav />
-        {/* {!isLoggedIn && <AuthNav />*/}
-        {/* {isLoggedIn && <LogOutBtn />}*/}
+        {!isLoggedIn && <AuthNav />}
+        {isLoggedIn && <LogOutBtn />}
       </div>
     </div>
   );

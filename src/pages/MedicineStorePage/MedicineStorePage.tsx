@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Loader, StoresList, Title } from "../../components";
+import { GoUpBtn, Loader, StoresList, Title } from "../../components";
 import { AppDispatch } from "../../redux/store";
 import { fetchStoresThunk } from "../../redux/stores/operation";
 import { selectIsLoading, selectStores } from "../../redux/stores/slice";
@@ -28,6 +28,7 @@ const MedicineStorePage = () => {
         <Title>Medicine store</Title>
         <StoresList stores={stores} />
       </section>
+      <GoUpBtn />
     </>
   );
 };

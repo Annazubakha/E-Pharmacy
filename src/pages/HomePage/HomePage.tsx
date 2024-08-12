@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import {
   MainBanner,
   MedicineStores,
@@ -5,16 +8,14 @@ import {
   PharmacyPromoSection,
   ReviewsSection,
   Loader,
+  GoUpBtn,
 } from "../../components";
-import { useDispatch, useSelector } from "react-redux";
 
 import {
   selectIsLoadingReviews,
   selectReviews,
 } from "../../redux/reviews/slice";
-import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
-import { toast } from "react-toastify";
 import { fetchReviewsThunk } from "../../redux/reviews/operation";
 import { selectIsLoading, selectStores } from "../../redux/storesNear/slice";
 import { fetchStoresNearThunk } from "../../redux/storesNear/operation";
@@ -46,6 +47,7 @@ const HomePage = (): JSX.Element => {
       <MedicineStores stores={stores} />
       <PharmacyPromoSection />
       <ReviewsSection reviews={reviews} />
+      <GoUpBtn />
     </>
   );
 };

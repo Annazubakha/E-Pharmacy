@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { registerSchema } from "../../schemas";
-import { useState } from "react";
-import { Icon } from "../Icon/Icon";
+import { Icon, Loader } from "../index";
+import { AppDispatch } from "../../redux/store";
+import { registerThunk } from "../../redux/auth/operations";
+import { selectIsLoading } from "../../redux/auth/slice";
 
 type Inputs = {
   name: string;
@@ -12,6 +18,9 @@ type Inputs = {
 };
 
 export const RegisterForm = (): JSX.Element => {
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const isLoading = useSelector(selectIsLoading);
   const [showPass, setShowPass] = useState<boolean>(false);
   const passVisibility = (): void => {
     setShowPass((prevState) => !prevState);
@@ -21,7 +30,15 @@ export const RegisterForm = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ resolver: yupResolver(registerSchema) });
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data): Promise<void> => {
+    try {
+      await dispatch(registerThunk(data)).unwrap();
+      toast.success("User was registered successfully. Please, log in.");
+      navigate("/login");
+    } catch (error) {
+      toast.error("Email is already in use.");
+    }
+  };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -83,9 +100,10 @@ export const RegisterForm = (): JSX.Element => {
 
       <button
         type="submit"
-        className="mt-[118px] btn_form_submit md:mt-[48px] md:w-[280px]"
+        className="mt-[118px] btn_form_submit md:mt-[48px] md:w-[280px] relative"
       >
         Register
+        {isLoading && <Loader size={12} />}
       </button>
     </form>
   );

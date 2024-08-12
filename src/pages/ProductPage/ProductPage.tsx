@@ -5,13 +5,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AppDispatch } from "../../redux/store";
 import { fetchOneProductThunk } from "../../redux/products/operation";
 import { toast } from "react-toastify";
-import { Icon } from "../../components";
+import { Icon, Modal, ModalAttention } from "../../components";
+import { useModal } from "../../helpers";
+import { selectIsLoggedIn } from "../../redux/auth/slice";
 
 const ProductPage = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const productDetails = useSelector(selectProduct);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const [isModalAttention, toggleIsModalAttention] = useModal();
   const [tab, setTab] = useState<string>("description");
   useEffect(() => {
     const loadProductDetails = async (): Promise<void> => {
@@ -48,7 +52,12 @@ const ProductPage = (): JSX.Element => {
             Brand: {productDetails?.suppliers}
           </p>
           <div className="flex justify-between items-center">
-            <button className="bg-my-green w-[140px] h-[44px] flex justify-center items-center rounded-[60px] text-[14px] leading-[1.29] font-medium text-white hover:bg-green-dark  focus:bg-green-dark">
+            <button
+              className="bg-my-green w-[140px] h-[44px] flex justify-center items-center rounded-[60px] text-[14px] leading-[1.29] font-medium text-white hover:bg-green-dark  focus:bg-green-dark"
+              onClick={
+                isLoggedIn ? toggleIsModalAttention : toggleIsModalAttention
+              }
+            >
               Add to cart
             </button>
           </div>
@@ -166,6 +175,11 @@ const ProductPage = (): JSX.Element => {
             <p className="text-[12px] md:text-[14px]">There are no reviews.</p>
           ))}
       </div>
+      {isModalAttention && (
+        <Modal toggleModal={toggleIsModalAttention}>
+          <ModalAttention />
+        </Modal>
+      )}
     </section>
   );
 };

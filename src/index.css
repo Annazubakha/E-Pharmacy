@@ -226,3 +226,32 @@ a {
 .dropdown_list_item {
   @apply cursor-pointer;
 }
+
+/**
+  |============================
+  | go up button styles
+  |============================
+*/
+.scroll-to-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 20px !important;
+  border-radius: 50% !important;
+}
+@media screen and (min-width: 768px) {
+  .scroll-to-top {
+    right: 32px !important;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .scroll-to-top {
+    width: 60px !important;
+    height: 60px !important;
+    right: 128px !important;
+  }
+}
+.scroll-to-top:hover,
+.scroll-to-top:focus {
+  opacity: 0.6;
+}

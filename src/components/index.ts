@@ -27,3 +27,6 @@ export * from "./ProductsList/ProductsList";
 export * from "./Pagination/Pagination";
 export * from "./Filters/Filters";
 export * from "./SearchField/SearchField";
+export * from "./Modal/Modal";
+export * from "./ModalAttention/ModalAttention";
+export * from "./GoUpBtn/GoUpBtn";
