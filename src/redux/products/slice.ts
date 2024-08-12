@@ -17,7 +17,15 @@ export interface Category {
   _id: string;
   name: string;
 }
-
+interface ProductDescription {
+  main: string;
+  uses: string;
+  effects: string;
+  heart_health: string;
+  cancer: string;
+  support: string;
+  digestive_aid: string;
+}
 export interface Product {
   _id: string;
   id: string;
@@ -27,7 +35,7 @@ export interface Product {
   stock: string;
   price: string;
   category: string;
-  description?: object;
+  description?: ProductDescription[];
   reviews?: ProductReview[];
 }
 
