@@ -29,12 +29,19 @@ export const Header = (): JSX.Element => {
       <Logo />
       {size.innerWidth >= 1440 && <Nav />}
       {size.innerWidth >= 1440 && !isLoggedIn && <AuthNav />}
-      <div className="flex items-center gap-[10px] md:gap-[12px]">
+      <div
+        className={`${
+          isLoggedIn || size.innerWidth <= 1440
+            ? "flex items-center gap-[10px] md:gap-[12px] "
+            : "hidden"
+        }`}
+      >
         {isLoggedIn && (
           <div className="w-[40px] h-[40px] rounded-full flex justify-center items-center bg-green-10 text-[14px] leading-[1.4] uppercase font-semibold text-my-green md:w-[44px] md:h-[44px] md:text-[18px]">
             <p>{convertedName}</p>
           </div>
         )}
+        {size.innerWidth >= 1440 && isLoggedIn && <LogOutBtn />}
         {size.innerWidth < 1440 && (
           <button onClick={toggleBurgerMenu} className="lg:hidden">
             <Icon
@@ -48,9 +55,7 @@ export const Header = (): JSX.Element => {
             />
           </button>
         )}
-        {size.innerWidth >= 1440 && isLoggedIn && <LogOutBtn />}
       </div>
-
       {isMobileMenuOpen && <BurgerMenu toggleBurgerMenu={toggleBurgerMenu} />}
     </header>
   );
