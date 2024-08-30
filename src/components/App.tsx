@@ -18,16 +18,16 @@ const ProductPage = lazy(() => import("../pages/ProductPage/ProductPage"));
 const CartPage = lazy(() => import("../pages/CartPage/CartPage"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 
-export const App = () => {
+export const App = (): JSX.Element => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const token = useSelector(selectToken);
   const dispatch = useDispatch<AppDispatch>();
   const link = isLoggedIn ? "/cart" : "/home";
   useEffect(() => {
-    if (token) {
+    if (token && !isLoggedIn) {
       dispatch(fetchRefreshThunk());
     }
-  }, [dispatch, token]);
+  }, [dispatch, token, isLoggedIn]);
   return (
     <>
       <Routes>

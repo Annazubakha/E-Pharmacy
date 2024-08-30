@@ -68,7 +68,7 @@ export const Footer = (): JSX.Element => {
               />
             </a>
           </li>
-          <li className=" cursor-pointer h-[44px] w-[44px] rounded-[10px] border-[1px] border-before-color flex justify-center items-center  focus:border-social-media-hover-color hover:border-social-media-hover-color transition-colors">
+          <li className="cursor-pointer h-[44px] w-[44px] rounded-[10px] border-[1px] border-before-color flex justify-center items-center  focus:border-social-media-hover-color hover:border-social-media-hover-color transition-colors">
             <a
               href=" https://www.instagram.com/goitclub/"
               target="_blank"

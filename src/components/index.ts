@@ -30,3 +30,6 @@ export * from "./SearchField/SearchField";
 export * from "./Modal/Modal";
 export * from "./ModalAttention/ModalAttention";
 export * from "./GoUpBtn/GoUpBtn";
+export * from "./CartForm/CartForm";
+export * from "./CartList/CartList";
+export * from "./CartItem/CartItem";

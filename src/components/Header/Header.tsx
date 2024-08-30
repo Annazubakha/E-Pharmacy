@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AuthNav, BurgerMenu, Icon, Logo, LogOutBtn, Nav } from "../index";
 import { convertUserName, useWindowSizeHook } from "../../helpers";
@@ -37,7 +37,21 @@ export const Header = (): JSX.Element => {
         }`}
       >
         {isLoggedIn && (
-          <div className="w-[40px] h-[40px] rounded-full flex justify-center items-center bg-green-10 text-[14px] leading-[1.4] uppercase font-semibold text-my-green md:w-[44px] md:h-[44px] md:text-[18px]">
+          <NavLink
+            to="/cart"
+            className={` w-[40px] h-[40px] rounded-full flex justify-center items-center  md:w-[44px] md:h-[44px] ${
+              location.pathname === "/home" ? "bg-white" : "bg-green-10"
+            } `}
+          >
+            <Icon id="cart" size={16} />
+          </NavLink>
+        )}
+        {isLoggedIn && (
+          <div
+            className={` w-[40px] h-[40px] rounded-full flex justify-center items-center  text-my-green text-[14px] leading-[1.4] uppercase font-semibold  md:w-[44px] md:h-[44px] md:text-[18px] ${
+              location.pathname === "/home" ? "bg-white" : "bg-green-10"
+            } `}
+          >
             <p>{convertedName}</p>
           </div>
         )}

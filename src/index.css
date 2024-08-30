@@ -255,3 +255,19 @@ a {
 .scroll-to-top:focus {
   opacity: 0.6;
 }
+
+/**
+  |============================
+  | cart
+  |============================
+*/
+.input_cart {
+  @apply w-full rounded-[60px] h-[44px] bg-white pl-[18px] text-[12px] border-[1px]  leading-[1.5] outline-none md:w-[260px];
+}
+.cart_input_name {
+  @apply ml-[18px] mt-[12px] text-[14px] leading-[1/29] font-semibold text-my-black mb-[8px] md:mt-0;
+}
+
+.input_error_cart {
+  @apply text-[10px] text-my-red absolute bottom-[-15px] left-[18px];
+}

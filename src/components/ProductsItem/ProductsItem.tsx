@@ -8,6 +8,7 @@ import { selectIsLoggedIn } from "../../redux/auth/slice";
 import { useModal } from "../../helpers";
 import { Modal } from "../Modal/Modal";
 import { ModalAttention } from "../ModalAttention/ModalAttention";
+import { fetchUpdateItemThunk } from "../../redux/cart/operations";
 
 interface ProductProps {
   product: Product;
@@ -19,9 +20,20 @@ export const ProductsItem: React.FC<ProductProps> = ({
   const [isModalAttention, toggleIsModalAttention] = useModal();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch<AppDispatch>();
+
   const handleItemDetails = async (id: string): Promise<void> => {
     try {
       await dispatch(fetchOneProductThunk(id)).unwrap();
+    } catch (error) {
+      toast.error("Something went wrong.");
+    }
+  };
+  const handleAddtoCart = async (id: string): Promise<void> => {
+    try {
+      await dispatch(
+        fetchUpdateItemThunk({ productId: id, quantity: 1 })
+      ).unwrap();
+      toast.success("Product was added to cart.");
     } catch (error) {
       toast.error("Something went wrong.");
     }
@@ -45,7 +57,9 @@ export const ProductsItem: React.FC<ProductProps> = ({
             <button
               className="bg-my-green w-[108px] h-[34px] flex justify-center items-center rounded-[24px] text-[14px] font-medium text-white hover:bg-green-dark  focus:bg-green-dark"
               onClick={
-                isLoggedIn ? toggleIsModalAttention : toggleIsModalAttention
+                isLoggedIn
+                  ? () => handleAddtoCart(product._id)
+                  : toggleIsModalAttention
               }
             >
               Add to cart

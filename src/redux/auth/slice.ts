@@ -50,6 +50,7 @@ const slice = createSlice({
           state.token = token;
           state.user = user;
           state.isLoggedIn = true;
+          state.isRefresh = true;
         }
       )
       .addCase(loginThunk.fulfilled, (state, { payload: { token, user } }) => {

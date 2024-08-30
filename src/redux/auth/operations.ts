@@ -101,11 +101,9 @@ export const fetchRefreshThunk = createAsyncThunk<
 >("user/refresh", async (_, thunkAPI) => {
   const state = thunkAPI.getState() as RootState;
   const persistedToken = state.auth.token;
-
   if (persistedToken === null) {
     return thunkAPI.rejectWithValue({ message: "Imposible refresh user." });
   }
-
   try {
     setToken(persistedToken);
     const { data } = await instance.post<RefreshResponse>("/user/refresh", {

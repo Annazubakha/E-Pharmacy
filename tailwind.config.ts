@@ -49,6 +49,7 @@ export default {
         "input-border-color": "rgba(29, 30, 33, 0.1)",
         "gris-light": "rgba(29, 30, 33, 0.6)",
         "comment-color": " #6a6a6f",
+        "border-input": "rgba(29, 30, 33, 0.2)",
       },
     },
   },

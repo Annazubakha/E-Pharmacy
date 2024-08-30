@@ -92,5 +92,20 @@
 <symbol id="icon-arrow-top" viewBox="0 0 32 32">
 <path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path>
 </symbol>
+<symbol  id="icon-plus" viewBox="0 0 18 18" fill="none">
+  <path d="M9 3.75V14.25" stroke="#59B17A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M3.74902 9H14.249" stroke="#59B17A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+</symbol>
+<symbol  id="icon-minus" viewBox="0 0 18 18" fill="none">
+  <path d="M3.74902 9H14.249" stroke="#59B17A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+</symbol>
+<symbol id="icon-checked"  viewBox="0 0 18 18" fill="none">
+  <rect x="1" y="1" width="16" height="16" rx="8" stroke="#59B17A" stroke-width="2" />
+  <rect x="4" y="4" width="10" height="10" rx="5" fill="#59B17A" />
+</symbol>
+<symbol id="icon-unchecked"  viewBox="0 0 18 18" fill="none">
+  <rect x="1" y="1" width="16" height="16" rx="8" stroke="rgba(18, 20, 23, 0.2)" stroke-width="2" />
+
+</symbol>
    </defs>
   </svg>
